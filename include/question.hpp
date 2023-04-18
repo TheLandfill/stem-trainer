@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include <sstream>
+#include <cstdio>
 #include <random>
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -22,6 +24,8 @@ public:
 	virtual void add_fudge_factor() = 0;
 	virtual std::string get_topic_name() = 0;
 };
+
+bool utf_print(FILE * out, std::stringstream& str);
 
 #define QUESTION_STANDARD_DECL(X) \
 public: \

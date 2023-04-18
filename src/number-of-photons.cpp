@@ -12,7 +12,6 @@ bool Number_Of_Photons::check_answer(const std::string& user_ans) {
 	try {
 		user_num_ans = std::stod(user_ans);
 	} catch(std::invalid_argument e) {
-		std::cerr << "That is not a valid number.\n";
 		return false;
 	}
 	return (

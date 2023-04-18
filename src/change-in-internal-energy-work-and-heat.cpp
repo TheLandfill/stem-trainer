@@ -12,7 +12,6 @@ bool Change_In_Internal_Energy_Work_And_Heat::check_answer(const std::string& us
 	try {
 		user_num_ans = std::stod(user_ans);
 	} catch(std::invalid_argument e) {
-		std::cerr << "That is not a valid number.\n";
 		return false;
 	}
 	return (
