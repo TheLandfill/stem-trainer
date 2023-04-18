@@ -22,6 +22,7 @@ bool Hydrogen_Energy_Levels::check_answer(const std::string& user_ans) {
 
 void Hydrogen_Energy_Levels::change_vals(std::mt19937& gen) {
 	std::stringstream strstr;
+	strstr << "| Hydrogen Energy Levels |\n";
 	size_t n1 = energy_level_chooser(gen);
 	size_t n2 = energy_level_chooser(gen);
 	while (n2 == n1) {
@@ -60,7 +61,7 @@ void Hydrogen_Energy_Levels::change_vals(std::mt19937& gen) {
 	default:
 		strstr <<
 		"Determine the wavelength of the photon emitted in a hydrogen\n"
-		"atom transition if the electron starts in n = " << (size_t)n_initial << " and ends with n = " << (size_t)n_final << ".";
+		"atom transition if the electron starts in n = " << (size_t)n_initial << " and ends with n = " << (size_t)n_final << ".\nGive your answer in nm.";
 		explanation =
 		"Plug nf and ni into E_transition = R_H (1 / nf^2 - 1 / ni^2)\n\t"
 		"to get the energy of the photon. From there, use E_photon = hc/λ.";
@@ -80,4 +81,3 @@ Question * Hydrogen_Energy_Levels::make_copy(std::mt19937& gen) {
 }
 
 QUESTION_STANDARD_DEFN(Hydrogen_Energy_Levels)
-

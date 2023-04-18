@@ -22,6 +22,7 @@ bool Wavelength_And_Frequency::check_answer(const std::string& user_ans) {
 
 void Wavelength_And_Frequency::change_vals(std::mt19937& gen) {
 	std::stringstream strstr;
+	strstr << "| Wavelength And Frequency |\n";
 	double wavelength = wavelength_chooser(gen);
 	double frequency = 3.0e8 * 1.0e9 / wavelength;
 	bool answer_is_wavelength = wl_or_freq_chooser(gen);

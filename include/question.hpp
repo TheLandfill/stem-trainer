@@ -16,8 +16,10 @@ public:
 	virtual size_t num_correct() = 0;
 	virtual size_t num_incorrect() = 0;
 	virtual size_t num_worked() = 0;
+	virtual size_t get_fudge_factor() = 0;
 	virtual void add_correct() = 0;
 	virtual void add_incorrect() = 0;
+	virtual void add_fudge_factor() = 0;
 	virtual std::string get_topic_name() = 0;
 };
 
@@ -31,15 +33,18 @@ public: \
 	size_t num_correct() override; \
 	size_t num_incorrect() override; \
 	size_t num_worked() override; \
+	size_t get_fudge_factor() override; \
 	void add_correct() override; \
 	void add_incorrect() override; \
+	void add_fudge_factor() override; \
 	X(X&& x) noexcept = default; \
 	virtual std::string get_topic_name() override; \
 private: \
 	std::string question; \
 	std::string explanation; \
 	static size_t correct; \
-	static size_t incorrect;
+	static size_t incorrect; \
+	static size_t fudge_factor;
 
 #define QUESTION_STANDARD_DEFN(X) \
 std::string X::get_question() { \
@@ -57,17 +62,30 @@ size_t X::num_correct() { \
 size_t X::num_incorrect() { \
 	return incorrect; \
 } \
+\
 size_t X::num_worked() { \
 	return correct + incorrect; \
 } \
+\
+size_t X::get_fudge_factor() { \
+	return fudge_factor; \
+} \
+\
+void X::add_fudge_factor() { \
+	fudge_factor++; \
+} \
+\
 void X::add_correct() { \
 	correct++; \
 } \
+\
 void X::add_incorrect() { \
 	incorrect++; \
 } \
+\
 std::string X::get_topic_name() { \
 	return #X; \
 } \
 size_t X::correct = 0; \
-size_t X::incorrect = 0;
+size_t X::incorrect = 0; \
+size_t X::fudge_factor = 1;

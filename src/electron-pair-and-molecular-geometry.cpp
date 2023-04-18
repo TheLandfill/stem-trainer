@@ -42,6 +42,7 @@ bool Electron_Pair_And_Molecular_Geometry::check_answer(const std::string& user_
 
 void Electron_Pair_And_Molecular_Geometry::change_vals(std::mt19937& gen) {
 	std::stringstream strstr;
+	strstr << "| Electron Pair And Molecular Geometry |\n";
 	static const size_t possible_num_lone_pairs[5]{
 		0,
 		1,

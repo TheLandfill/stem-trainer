@@ -31,11 +31,12 @@ void Change_In_Internal_Energy_Work_And_Heat::change_vals(std::mt19937& gen) {
 	while (heat_given_to_environment == 0) {
 		heat_given_to_environment = energy_chooser(gen);
 	}
+	strstr << "| Change in Internal Energy Given Heat and Work |\n";
 	strstr << "What is the change in energy of a system that ";
 	if (heat_given_to_environment < 0) {
-		strstr << "absorbs " << -heat_given_to_environment << " kJ from the environment";
+		strstr << "absorbs " << -heat_given_to_environment << " kJ in heat from the environment";
 	} else {
-		strstr << "gives off " << heat_given_to_environment << " kJ";
+		strstr << "gives off " << heat_given_to_environment << " kJ in heat to the environment";
 	}
 	strstr << "\nand\n";
 	if (work_done_on_environment < 0) {
@@ -65,7 +66,7 @@ void Change_In_Internal_Energy_Work_And_Heat::change_vals(std::mt19937& gen) {
 	}
 	strstr << " J\n\t"
 	"Note that the work is in J, so we need to divide it by 1000."
-	"\n\tAnswer: " << std::scientific << std::setprecision(3) << answer;
+	"\n\tAnswer: " << std::fixed << std::setprecision(3) << answer;
 	explanation = strstr.str();
 }
 

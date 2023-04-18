@@ -73,34 +73,40 @@ int main() {
 	// unit_topics.emplace_back();
 	// unit_topics.back().emplace_back(new Extract_Info_From_Trig_Function{gen});
 	// Chem starts here
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Wavelength_And_Frequency{gen});
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Photon_Energy{gen});
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Number_Of_Photons{gen});
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Hydrogen_Energy_Levels{gen});
 	unit_topics.emplace_back();
 	unit_topics.back().emplace_back(new Change_In_Internal_Energy_Work_And_Heat{gen});
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Wavelength_And_Frequency{gen});
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Photon_Energy{gen});
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 2});
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 3});
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 4});
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 5});
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 6});
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Number_Of_Photons{gen});
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Hydrogen_Energy_Levels{gen});
+	//unit_topics.emplace_back();
 	//unit_topics.back().emplace_back(new Specific_Heat_Capacity{gen});
+	//unit_topics.emplace_back();
+	//unit_topics.back().emplace_back(new Electron_Orbital_Hybridization{gen});
+	//unit_topics.emplace_back();
+	//unit_topics.back().emplace_back(new Number_Of_Core_Electrons{gen});
+	//unit_topics.emplace_back();
+	//unit_topics.back().emplace_back(new Atomic_Number_Relationships{gen});
 	//unit_topics.emplace_back();
 	//unit_topics.back().emplace_back(new Period_And_Group_Given_EC{gen});
 	//unit_topics.emplace_back();
 	//unit_topics.back().emplace_back(new EC_Given_Ion{gen});
 	//unit_topics.emplace_back();
 	//unit_topics.back().emplace_back(new Diamagnetic_Vs_Paramagnetic{gen});
-	//unit_topics.emplace_back();
-	//unit_topics.emplace_back();
-	//unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 2});
-	//unit_topics.emplace_back();
-	//unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 3});
-	//unit_topics.emplace_back();
-	//unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 4});
-	//unit_topics.emplace_back();
-	//unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 5});
-	//unit_topics.emplace_back();
-	//unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 6});
 	std::vector<std::vector<std::unique_ptr<Question>>> units;
 	for (auto & unit : unit_topics) {
 		units.emplace_back();
@@ -110,23 +116,9 @@ int main() {
 			}
 		}
 	}
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Pythagorean_Theorem{gen});
-	// unit_topics.back().emplace_back(new Pythagorean_Identities{gen});
-	// unit_topics.back().emplace_back(new Radians_To_Degrees{gen});
-	// unit_topics.back().emplace_back(new Simple_Trig{gen});
-	// unit_topics.back().emplace_back(new Point_From_Angle_And_Other_Point{gen});
-	// unit_topics.back().emplace_back(new Unit_Circle{gen, 0});
-	// unit_topics.back().emplace_back(new Unit_Circle{gen, 1});
-	// unit_topics.back().emplace_back(new Unit_Circle{gen, 2});
-	// unit_topics.back().emplace_back(new Inverse_Unit_Circle{gen, 0});
-	// unit_topics.back().emplace_back(new Inverse_Unit_Circle{gen, 1});
-	// unit_topics.back().emplace_back(new Inverse_Unit_Circle{gen, 2});
-	// unit_topics.back().emplace_back(new Sine_Cosine_Range_Amplitude_Midline{gen});
 	units.emplace_back();
 	std::queue<std::unique_ptr<Question>> extra_review_questions;
 	std::string user_answer;
-	std::unique_ptr<Question> cur_question;
 	size_t num_units_to_review = 0;
 	for (auto& unit : units) {
 		size_t total_number_of_questions_in_unit_answered = 0;
@@ -144,6 +136,14 @@ int main() {
 			std::uniform_int_distribution<size_t> question_index{(size_t)0, unit.size() - 1};
 			size_t index = question_index(gen);
 			std::unique_ptr<Question>& cur_question = unit.at(index);
+			if ((double)(cur_question->num_correct()) / (double)(cur_question->num_worked() + cur_question->get_fudge_factor()) >= 2.0 / 3.0 - 0.01) {
+				cur_question->add_fudge_factor();
+				std::cout << "Question skipped because you've done well on\n" << cur_question->get_topic_name() << " questions.\n";
+				std::iter_swap(unit.end() - 1, unit.begin() + index);
+				unit.pop_back();
+				std::cout << "Only " << unit.size() << " more questions to go.\n";
+				continue;
+			}
 			std::cout << "========================================\n";
 			std::cout << cur_question->get_question() << "\n";
 			// std::cout << cur_question->get_explanation() << "\n";
@@ -192,5 +192,6 @@ int main() {
 	}
 	std::cout << "========================================\n";
 	std::cout << "========================================\n";
+	std::cout << "Hit Enter to end the program.\n";
 	std::cin.get();
 }

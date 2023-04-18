@@ -22,13 +22,14 @@ bool Number_Of_Photons::check_answer(const std::string& user_ans) {
 
 void Number_Of_Photons::change_vals(std::mt19937& gen) {
 	std::stringstream strstr;
+	strstr << "| Number Of Photons |\n";
 	double wavelength = wavelength_chooser(gen);
 	double frequency = 3.0e8 * 1.0e9 / wavelength;
 	double energy = energy_chooser(gen);
 	strstr <<
 	"How many photons are there in a flash of light (or\n"
 	"electromagnetic radiation) with a wavelength of\n"
-	<< wavelength << " nm releases " << energy << " kJ?";
+	<< wavelength << " nm that releases " << energy << " kJ?";
 	strstr << "\nTo write 7.5 × 10⁸ or 7.5 * 10^8, use the notation 7.5e8.";
 	double h = 6.626e-34;
 	double photon_energy = h * frequency;

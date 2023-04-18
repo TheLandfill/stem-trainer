@@ -22,6 +22,7 @@ bool Photon_Energy::check_answer(const std::string& user_ans) {
 
 void Photon_Energy::change_vals(std::mt19937& gen) {
 	std::stringstream strstr;
+	strstr << "| Photon Energy |\n";
 	double wavelength = wavelength_chooser(gen);
 	double frequency = 3.0e8 * 1.0e9 / wavelength;
 	strstr << "What is the energy of a photon with a wavelength of " << wavelength << " nm?\nGive your answer in Joules.";
