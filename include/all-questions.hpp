@@ -17,3 +17,6 @@
 #include "number-of-photons.hpp"
 #include "hydrogen-energy-levels.hpp"
 #include "change-in-internal-energy-work-and-heat.hpp"
+#include "electron-orbital-hybridization.hpp"
+#include "number-of-core-electrons.hpp"
+#include "specific-heat-capacity.hpp"
