@@ -9,13 +9,13 @@
 int main() {
 	std::random_device rd;
 	std::mt19937 gen{rd()};
-	size_t min_num_correct = 5;
+	size_t min_num_correct = 3;
 	size_t total_number_of_questions_answered = 0;
 	std::vector<std::vector<std::unique_ptr<Question>>> unit_topics;
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Pythagorean_Theorem{gen});
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Pythagorean_Identities{gen});
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Pythagorean_Theorem{gen});
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Pythagorean_Identities{gen});
 	// unit_topics.emplace_back();
 	// unit_topics.back().emplace_back(new Radians_To_Degrees{gen});
 	// unit_topics.emplace_back();
@@ -44,16 +44,16 @@ int main() {
 	// unit_topics.back().emplace_back(new Sine_Cosine_Range_Amplitude_Midline{gen});
 	// unit_topics.emplace_back();
 	// unit_topics.back().emplace_back(new Extract_Info_From_Trig_Function{gen});
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 2});
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 3});
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 4});
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 5});
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 6});
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 2});
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 3});
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 4});
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 5});
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Electron_Pair_And_Molecular_Geometry{gen, 6});
 	std::vector<std::vector<std::unique_ptr<Question>>> units;
 	for (auto & unit : unit_topics) {
 		units.emplace_back();
@@ -63,18 +63,19 @@ int main() {
 			}
 		}
 	}
-	unit_topics.back().emplace_back(new Pythagorean_Theorem{gen});
-	unit_topics.back().emplace_back(new Pythagorean_Identities{gen});
+	unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Pythagorean_Theorem{gen});
+	// unit_topics.back().emplace_back(new Pythagorean_Identities{gen});
 	unit_topics.back().emplace_back(new Radians_To_Degrees{gen});
-	unit_topics.back().emplace_back(new Simple_Trig{gen});
-	unit_topics.back().emplace_back(new Point_From_Angle_And_Other_Point{gen});
-	unit_topics.back().emplace_back(new Unit_Circle{gen, 0});
-	unit_topics.back().emplace_back(new Unit_Circle{gen, 1});
-	unit_topics.back().emplace_back(new Unit_Circle{gen, 2});
-	unit_topics.back().emplace_back(new Inverse_Unit_Circle{gen, 0});
-	unit_topics.back().emplace_back(new Inverse_Unit_Circle{gen, 1});
-	unit_topics.back().emplace_back(new Inverse_Unit_Circle{gen, 2});
-	unit_topics.back().emplace_back(new Sine_Cosine_Range_Amplitude_Midline{gen});
+	// unit_topics.back().emplace_back(new Simple_Trig{gen});
+	// unit_topics.back().emplace_back(new Point_From_Angle_And_Other_Point{gen});
+	// unit_topics.back().emplace_back(new Unit_Circle{gen, 0});
+	// unit_topics.back().emplace_back(new Unit_Circle{gen, 1});
+	// unit_topics.back().emplace_back(new Unit_Circle{gen, 2});
+	// unit_topics.back().emplace_back(new Inverse_Unit_Circle{gen, 0});
+	// unit_topics.back().emplace_back(new Inverse_Unit_Circle{gen, 1});
+	// unit_topics.back().emplace_back(new Inverse_Unit_Circle{gen, 2});
+	// unit_topics.back().emplace_back(new Sine_Cosine_Range_Amplitude_Midline{gen});
 	units.emplace_back();
 	std::queue<std::unique_ptr<Question>> extra_review_questions;
 	std::string user_answer;
