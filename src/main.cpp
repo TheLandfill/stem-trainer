@@ -242,7 +242,7 @@ int main() {
 			utf_print(stdout, strstr);
 			// strstr << cur_question->get_explanation() << "\n";
 			// utf_print(stdout, strstr);
-			// std::getline(std::cin, user_answer);
+			std::getline(std::cin, user_answer);
 			std::string explanation = cur_question->get_explanation();
 			if (cur_question->check_answer(user_answer)) {
 				cur_question->add_correct();
