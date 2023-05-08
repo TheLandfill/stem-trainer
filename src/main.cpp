@@ -127,38 +127,38 @@ int main() {
 	}
 	unit_topics.emplace_back();
 	unit_topics.back().emplace_back(new Function_Transformations{ gen });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Extract_Info_From_Trig_Function{ gen });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Unit_Circle{ gen, 0 });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Polar_And_Cartesian{ gen });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Unit_Circle{ gen, 1 });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Two_Sides_All_Trig{ gen });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Unit_Circle{ gen, 2 });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Arc_Length_And_Angles{ gen });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Inverse_Unit_Circle{ gen, 0 });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Point_From_Angle_And_Other_Point{ gen });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Inverse_Unit_Circle{ gen, 1 });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Pythagorean_Identities{ gen });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Inverse_Unit_Circle{ gen, 2 });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Sine_Cosine_Range_Amplitude_Midline{ gen });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Simple_Trig{gen});
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Pythagorean_Theorem{ gen });
-	// unit_topics.emplace_back();
-	// unit_topics.back().emplace_back(new Radians_To_Degrees{ gen });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Extract_Info_From_Trig_Function{ gen });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Unit_Circle{ gen, 0 });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Polar_And_Cartesian{ gen });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Unit_Circle{ gen, 1 });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Two_Sides_All_Trig{ gen });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Unit_Circle{ gen, 2 });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Arc_Length_And_Angles{ gen });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Inverse_Unit_Circle{ gen, 0 });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Point_From_Angle_And_Other_Point{ gen });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Inverse_Unit_Circle{ gen, 1 });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Pythagorean_Identities{ gen });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Inverse_Unit_Circle{ gen, 2 });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Sine_Cosine_Range_Amplitude_Midline{ gen });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Simple_Trig{gen});
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Pythagorean_Theorem{ gen });
+	unit_topics.emplace_back();
+	unit_topics.back().emplace_back(new Radians_To_Degrees{ gen });
 
 	// Chem starts here
 	// unit_topics.emplace_back();
@@ -201,7 +201,8 @@ int main() {
 	units.emplace_back();
 	std::queue<std::unique_ptr<Question>> extra_review_questions;
 	std::string user_answer;
-	std::uniform_int_distribution true_gen{0, 4};
+	// Used to autocomplete the program
+	// std::uniform_int_distribution true_gen{0, 4};
 	size_t num_units_to_review = 0;
 	size_t total_num_correct = 0;
 	size_t total_num_incorrect = 0;
@@ -243,7 +244,7 @@ int main() {
 			// utf_print(stdout, strstr);
 			// std::getline(std::cin, user_answer);
 			std::string explanation = cur_question->get_explanation();
-			if (true_gen(gen) || cur_question->check_answer(user_answer)) {
+			if (cur_question->check_answer(user_answer)) {
 				cur_question->add_correct();
 				total_num_correct++;
 				cur_question->add_fudge_factor();
