@@ -1,4 +1,6 @@
 #pragma once
+#include "function-transformations.hpp"
+#include "exponential-growth-and-decay.hpp"
 #include "simple-trig.hpp"
 #include "unit-circle.hpp"
 #include "pythagorean-theorem.hpp"

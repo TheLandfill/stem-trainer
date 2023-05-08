@@ -112,41 +112,54 @@ int main() {
 	std::stringstream strstr;
 	std::random_device rd;
 	std::mt19937 gen{rd()};
-	size_t min_num_correct = 3;
+	size_t min_num_correct = 2;
 	size_t total_number_of_questions_answered = 0;
 	std::vector<std::vector<std::unique_ptr<Question>>> unit_topics;
+	for (int i = 0; i < 5; i++) {
+		unit_topics.emplace_back();
+		unit_topics.back().emplace_back(
+			new Exponential_Growth_And_Decay{
+				gen,
+				Exponential_Growth_And_Decay::unit_mins[i],
+				Exponential_Growth_And_Decay::unit_maxes[i]
+			}
+		);
+	}
 	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Extract_Info_From_Trig_Function{ gen });
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Unit_Circle{ gen, 0 });
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Polar_And_Cartesian{ gen });
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Unit_Circle{ gen, 1 });
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Two_Sides_All_Trig{ gen });
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Unit_Circle{ gen, 2 });
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Arc_Length_And_Angles{ gen });
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Inverse_Unit_Circle{ gen, 0 });
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Point_From_Angle_And_Other_Point{ gen });
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Inverse_Unit_Circle{ gen, 1 });
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Pythagorean_Identities{ gen });
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Inverse_Unit_Circle{ gen, 2 });
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Sine_Cosine_Range_Amplitude_Midline{ gen });
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Simple_Trig{gen});
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Pythagorean_Theorem{ gen });
-	unit_topics.emplace_back();
-	unit_topics.back().emplace_back(new Radians_To_Degrees{ gen });
+	unit_topics.back().emplace_back(new Function_Transformations{ gen });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Extract_Info_From_Trig_Function{ gen });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Unit_Circle{ gen, 0 });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Polar_And_Cartesian{ gen });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Unit_Circle{ gen, 1 });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Two_Sides_All_Trig{ gen });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Unit_Circle{ gen, 2 });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Arc_Length_And_Angles{ gen });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Inverse_Unit_Circle{ gen, 0 });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Point_From_Angle_And_Other_Point{ gen });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Inverse_Unit_Circle{ gen, 1 });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Pythagorean_Identities{ gen });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Inverse_Unit_Circle{ gen, 2 });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Sine_Cosine_Range_Amplitude_Midline{ gen });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Simple_Trig{gen});
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Pythagorean_Theorem{ gen });
+	// unit_topics.emplace_back();
+	// unit_topics.back().emplace_back(new Radians_To_Degrees{ gen });
+
 	// Chem starts here
 	// unit_topics.emplace_back();
 	// unit_topics.back().emplace_back(new Change_In_Internal_Energy_Work_And_Heat{gen});
@@ -188,7 +201,10 @@ int main() {
 	units.emplace_back();
 	std::queue<std::unique_ptr<Question>> extra_review_questions;
 	std::string user_answer;
+	std::uniform_int_distribution true_gen{0, 4};
 	size_t num_units_to_review = 0;
+	size_t total_num_correct = 0;
+	size_t total_num_incorrect = 0;
 	for (auto& unit : units) {
 		size_t total_number_of_questions_in_unit_answered = 0;
 		for (size_t i = 0; (i < (extra_review_questions.size() + 2) / 2) && !extra_review_questions.empty(); i++) {
@@ -203,7 +219,7 @@ int main() {
 				if (
 					(double)(cur_topic->num_correct())
 					/
-					((double)(cur_topic->num_worked())
+					((double)(cur_topic->num_worked()) / 1.25
 						+ sqrt((double)cur_topic->get_fudge_factor())
 					)
 					>=
@@ -223,12 +239,13 @@ int main() {
 			strstr << "========================================\n";
 			strstr << cur_question->get_question() << "\n";
 			utf_print(stdout, strstr);
-			//strstr << cur_question->get_explanation() << "\n";
-			//utf_print(stdout, strstr);
-			std::getline(std::cin, user_answer);
+			// strstr << cur_question->get_explanation() << "\n";
+			// utf_print(stdout, strstr);
+			// std::getline(std::cin, user_answer);
 			std::string explanation = cur_question->get_explanation();
-			if (cur_question->check_answer(user_answer)) {
+			if (true_gen(gen) || cur_question->check_answer(user_answer)) {
 				cur_question->add_correct();
+				total_num_correct++;
 				cur_question->add_fudge_factor();
 				std::iter_swap(unit.end() - 1, unit.begin() + index);
 				unit.pop_back();
@@ -240,6 +257,7 @@ int main() {
 				total_number_of_questions_answered++;
 			} else {
 				cur_question->add_incorrect();
+				total_num_incorrect++;
 				extra_review_questions.emplace(cur_question->make_copy(gen));
 				unit.emplace_back(std::move(cur_question->make_copy(gen)));
 				strstr << "\t========================================\n";
@@ -260,7 +278,9 @@ int main() {
 	}
 	strstr << "================================================================================\n";
 	strstr << "================================================================================\n";
-	strstr << "You answered " << total_number_of_questions_answered << " questions total.\n";
+	strstr << "You answered " << total_num_correct << " questions correctly and "
+	<< total_num_incorrect << " questions incorrectly\n"
+	"for a total of " << total_num_correct + total_num_incorrect << " questions. Your accuracy was " << 100.0 * (double)(total_num_correct) / (double)(total_num_correct + total_num_incorrect) << "%.\n";
 	utf_print(stdout, strstr);
 	size_t unit_index = 1;
 	for (const auto& unit : unit_topics) {
