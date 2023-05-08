@@ -96,12 +96,12 @@ strstr.str(std::string{}); \
 
 #define INVESTMENT_MACRO \
 std::stringstream strstr;\
-	std::uniform_int_distribution yearly_rate_chooser{20, 70};\
+	std::uniform_int_distribution<int> yearly_rate_chooser{20, 70};\
 	int yearly_rate = yearly_rate_chooser(gen);\
-	std::uniform_int_distribution initial_value_chooser{40, 100};\
+	std::uniform_int_distribution<int> initial_value_chooser{40, 100};\
 	int initial_value = initial_value_chooser(gen);\
 	/* yearly, monthly, daily, continuous */ \
-	std::uniform_int_distribution period_chooser{0, 3}; \
+	std::uniform_int_distribution<int> period_chooser{0, 3}; \
 	int period = period_chooser(gen);\
 	double period_list[4]{ 1.0, 12.0, 365.0, 1.0 }; \
 	(void)period_list; \
@@ -146,7 +146,7 @@ void Exponential_Growth_And_Decay::investment_initial_value(std::mt19937& gen) {
 
 void Exponential_Growth_And_Decay::investment_value_after_time(std::mt19937& gen) {
 	INVESTMENT_MACRO
-	std::uniform_int_distribution time_chooser{3, 20};
+	std::uniform_int_distribution<int> time_chooser{3, 20};
 	int years_after_investment = time_chooser(gen);
 	strstr << "what is the value of the account after " << years_after_investment << " years?\n"
 	"Round to the nearest dollar.";
@@ -226,7 +226,7 @@ void Exponential_Growth_And_Decay::investment_yearly_rate(std::mt19937& gen) {
 
 void Exponential_Growth_And_Decay::investment_time_until_value(std::mt19937& gen) {
 	INVESTMENT_MACRO
-	std::uniform_int_distribution final_value_chooser{(int)(initial_value * 1.5), initial_value * 2};
+	std::uniform_int_distribution<int> final_value_chooser{(int)(initial_value * 1.5), initial_value * 2};
 	int final_value = final_value_chooser(gen);
 	strstr <<
 	"How many years will you have to wait before the account has\n"
@@ -262,9 +262,9 @@ void Exponential_Growth_And_Decay::investment_time_until_value(std::mt19937& gen
 
 #define SALARY_MACRO \
 std::stringstream strstr;\
-	std::uniform_int_distribution yearly_rate_chooser{20, 100};\
+	std::uniform_int_distribution<int> yearly_rate_chooser{20, 100};\
 	int yearly_rate = yearly_rate_chooser(gen);\
-	std::uniform_int_distribution initial_salary_chooser{40, 100};\
+	std::uniform_int_distribution<int> initial_salary_chooser{40, 100};\
 	int initial_salary = initial_salary_chooser(gen);\
 	strstr <<\
 	"| Exponential Growth And Decay: Salary |\n" \
@@ -273,7 +273,7 @@ std::stringstream strstr;\
 
 void Exponential_Growth_And_Decay::salary_increase_initial_value(std::mt19937& gen) {
 	SALARY_MACRO
-	std::uniform_int_distribution continuous_or_yearly_chooser{0, 1};
+	std::uniform_int_distribution<int> continuous_or_yearly_chooser{0, 1};
 	int continuous_rate = continuous_or_yearly_chooser(gen);
 	strstr <<
 	"What would the variable `a` be if you were to model your salary with\n"
@@ -309,7 +309,7 @@ void Exponential_Growth_And_Decay::salary_increase_yearly_value(std::mt19937& ge
 
 void Exponential_Growth_And_Decay::salary_increase_time_until_reaches_value(std::mt19937& gen) {
 	SALARY_MACRO
-	std::uniform_int_distribution final_salary_chooser{(int)(initial_salary * 1.5), initial_salary * 2};
+	std::uniform_int_distribution<int> final_salary_chooser{(int)(initial_salary * 1.5), initial_salary * 2};
 	int final_salary = final_salary_chooser(gen);
 	strstr <<
 	"How many years will you have to wait before you make at\n"
@@ -331,9 +331,9 @@ void Exponential_Growth_And_Decay::salary_increase_time_until_reaches_value(std:
 
 #define DRUG_DECREASE_MACRO \
 std::stringstream strstr; \
-	std::uniform_int_distribution initial_value_chooser{2, 10}; \
+	std::uniform_int_distribution<int> initial_value_chooser{2, 10}; \
 	int initial_value = initial_value_chooser(gen); \
-	std::uniform_int_distribution decay_rate_chooser{1, 10}; \
+	std::uniform_int_distribution<int> decay_rate_chooser{1, 10}; \
 	int decay_rate_percent = decay_rate_chooser(gen); \
 	double continuous_decay_rate = -decay_rate_percent; \
 	continuous_decay_rate /= 100.0; \
@@ -348,7 +348,7 @@ void Exponential_Growth_And_Decay::drug_decrease_initial_value(std::mt19937& gen
 	DRUG_DECREASE_MACRO
 	strstr << "What is the value of the variable `a` in the formula\n"
 	"Q(t) = a ";
-	std::uniform_int_distribution continuous_or_hourly_chooser{0, 1};
+	std::uniform_int_distribution<int> continuous_or_hourly_chooser{0, 1};
 	int continuous_or_hourly = continuous_or_hourly_chooser(gen);
 	if (continuous_or_hourly) {
 		strstr << "e^(k t)?";
@@ -399,7 +399,7 @@ void Exponential_Growth_And_Decay::drug_decrease_hourly_rate(std::mt19937& gen) 
 
 void Exponential_Growth_And_Decay::drug_decrease_percent_after_time(std::mt19937& gen) {
 	DRUG_DECREASE_MACRO
-	std::uniform_int_distribution num_hours_chooser{1, 7};
+	std::uniform_int_distribution<int> num_hours_chooser{1, 7};
 	int num_hours = num_hours_chooser(gen);
 	strstr << "How much of the drug would be left after " << num_hours << " hours?\n"
 	"Round to three sig figs.";
@@ -418,7 +418,7 @@ void Exponential_Growth_And_Decay::drug_decrease_percent_after_time(std::mt19937
 
 void Exponential_Growth_And_Decay::drug_decrease_time_until_value(std::mt19937& gen) {
 	DRUG_DECREASE_MACRO
-	std::uniform_int_distribution final_value_chooser{ initial_value * 10, initial_value * 75 };
+	std::uniform_int_distribution<int> final_value_chooser{ initial_value * 10, initial_value * 75 };
 	double final_value = final_value_chooser(gen);
 	final_value /= 100.0;
 	strstr << "How long until " << std::fixed << std::setprecision(2) << final_value << " mg remains in\n"
@@ -439,9 +439,9 @@ void Exponential_Growth_And_Decay::drug_decrease_time_until_value(std::mt19937& 
 
 #define RADIOACTIVE_DECAY_MACRO \
 std::stringstream strstr;\
-	std::uniform_int_distribution period_chooser{1, 5};\
+	std::uniform_int_distribution<int> period_chooser{1, 5};\
 	int period = period_chooser(gen);\
-	std::uniform_int_distribution decay_rate_over_period_chooser{1, 5 * period};\
+	std::uniform_int_distribution<int> decay_rate_over_period_chooser{1, 5 * period};\
 	int decay_rate_over_period = decay_rate_over_period_chooser(gen);\
 	strstr <<\
 	"| Exponential Growth And Decay: Radioactive Decay |\n" \
@@ -454,7 +454,7 @@ std::stringstream strstr;\
 
 void Exponential_Growth_And_Decay::radioactive_decay_time_until_x_remains(std::mt19937& gen) {
 	RADIOACTIVE_DECAY_MACRO
-	std::uniform_int_distribution percent_remaining_chooser{25, 90};
+	std::uniform_int_distribution<int> percent_remaining_chooser{25, 90};
 	int percent_remaining = percent_remaining_chooser(gen);
 	strstr <<
 	"how long will it take until there is " << percent_remaining << "\% remaining?\n";
@@ -532,11 +532,11 @@ void Exponential_Growth_And_Decay::radioactive_decay_yearly_rate_of_decay(std::m
 
 #define COFFEE_MACRO \
 std::stringstream strstr;\
-	std::uniform_int_distribution final_temp_chooser{60, 80};\
+	std::uniform_int_distribution<int> final_temp_chooser{60, 80};\
 	int final_temp = final_temp_chooser(gen);\
-	std::uniform_int_distribution initial_temp_chooser{160, 200};\
+	std::uniform_int_distribution<int> initial_temp_chooser{160, 200};\
 	int initial_temp = initial_temp_chooser(gen);\
-	std::uniform_int_distribution decay_rate_chooser{60, 95};\
+	std::uniform_int_distribution<int> decay_rate_chooser{60, 95};\
 	int decay_rate = decay_rate_chooser(gen);\
 	int temp_diff = initial_temp - final_temp; \
 	strstr <<\
@@ -550,7 +550,7 @@ void Exponential_Growth_And_Decay::coffee_time_until_reaches_temperature(std::mt
 	COFFEE_MACRO
 	int temp_diff_scale = temp_diff;
 	temp_diff_scale /= 4;
-	std::uniform_int_distribution desired_temp_chooser{final_temp + temp_diff_scale, initial_temp - temp_diff_scale};
+	std::uniform_int_distribution<int> desired_temp_chooser{final_temp + temp_diff_scale, initial_temp - temp_diff_scale};
 	int desired_temp = desired_temp_chooser(gen);
 	strstr << "How many minutes after it is poured will it reach the\n"
 	"temperature "<< desired_temp << "°F?";

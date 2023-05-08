@@ -20,7 +20,7 @@ bool Polar_And_Cartesian::check_answer(const std::string& user_ans) {
 void Polar_And_Cartesian::change_vals(std::mt19937& gen) {
 	std::stringstream strstr;
 	bool cartesian_answer = polar_or_cartesian_answer_chooser(gen);
-	strstr << "| Polar to Cartesian and Back |";
+	strstr << "| Polar to Cartesian and Back |\n";
 	if (cartesian_answer) {
 		bool x_answer = first_or_second_coord_chooser(gen);
 		double r = (double)radius_chooser(gen) / 10.0;
