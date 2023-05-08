@@ -20,7 +20,7 @@ bool Pythagorean_Theorem::check_answer(const std::string& user_ans) {
 
 void Pythagorean_Theorem::change_vals(std::mt19937& gen) {
 	std::stringstream strstr;
-	strstr << "| Pythagorean_Theorem |: " <<
+	strstr << "| Pythagorean_Theorem |\n"
 R"""(Given the following right triangle
                .
               /|

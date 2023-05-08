@@ -42,7 +42,7 @@ void Radians_To_Degrees::change_vals(std::mt19937& gen) {
 		"degrees",
 		"radians"
 	};
-	strstr << "| Radians and Degrees |: Convert " << std::setprecision(5) << given_value <<
+	strstr << "| Radians and Degrees |\nConvert " << std::setprecision(5) << given_value <<
 	angle_units[rad_or_deg] << " to " << other_angle_unit_names[rad_or_deg] << ".";
 	question = strstr.str();
 	explanation += "\n\tAnswer: ";

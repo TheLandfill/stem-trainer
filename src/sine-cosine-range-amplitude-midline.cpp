@@ -35,15 +35,16 @@ void Sine_Cosine_Range_Amplitude_Midline::change_vals(
 		"cosine"
 	};
 	size_t mid_ar_or_range = given_mid_ar_or_range(gen);
+	question = "| Sine or Cosine Amplitude, Range, and Midline |\n";
 	if (mid_ar_or_range == 0) {
 		size_t want_max_or_min = desired_value_chooser(gen);
-		question = "Given that a ";
+		question += "Given that a ";
 		question += sin_or_cos_text[sin_or_cos];
 		question += " function has a midline of y = ";
 		question += std::to_string(midval);
-		question += " and an amplitude of ";
+		question += "\nand an amplitude of ";
 		question += std::to_string(amp);
-		question += "\n, find its ";
+		question += ", find its ";
 		switch (want_max_or_min) {
 		case 0:
 			answer = min;
@@ -57,13 +58,13 @@ void Sine_Cosine_Range_Amplitude_Midline::change_vals(
 			break;
 		}
 	} else if (mid_ar_or_range == 1) {
-		question = "Given that a ";
+		question += "Given that a ";
 		question += sin_or_cos_text[sin_or_cos];
 		question += " function has a minimum of ";
 		question += std::to_string(min);
-		question += " and a maximum of ";
+		question += "\nand a maximum of ";
 		question += std::to_string(max);
-		question += "\n, find its ";
+		question += ", find its ";
 		size_t want_mid_or_amp = desired_value_chooser(gen);
 		switch (want_mid_or_amp) {
 		case 0:

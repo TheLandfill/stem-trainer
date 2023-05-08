@@ -16,7 +16,7 @@ void Extract_Info_From_Trig_Function::change_vals(std::mt19937& gen) {
 		amplitude = val_chooser(gen);
 	}
 	std::stringstream strstr;
-	strstr << "Given the following trig function:\n";
+	strstr << "| Extracting Info From Trig Function |\nGiven the following trig function:\n";
 	if (amplitude == -1) {
 		strstr << "-";
 	} else if (amplitude == 1) {

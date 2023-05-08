@@ -114,7 +114,7 @@ bool Unit_Circle::check_answer(const std::string& user_ans) {
 void Unit_Circle::change_vals(std::mt19937& gen) {
 	size_t theta_choice = theta_chooser(gen);
 	size_t rad_or_deg = rad_or_deg_dec(gen);
-	question = "| Unit Circle |: What is the exact value of ";
+	question = "| Unit Circle |\nWhat is the exact value of ";
 	question += func_names[which_func];
 	question += "(";
 	question += angles[rad_or_deg][theta_choice];

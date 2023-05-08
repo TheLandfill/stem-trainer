@@ -24,7 +24,7 @@ void Two_Sides_All_Trig::change_vals(std::mt19937& gen) {
 	double y = length_chooser(gen) / 10.0;
 	double h = sqrt(x * x + y * y);
 	std::stringstream strstr;
-	strstr << "| Trig Function Definitions |: " <<
+	strstr << "| Trig Function Definitions |\n"
 R"""(Given the following right triangle
                .
               /|

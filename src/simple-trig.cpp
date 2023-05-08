@@ -20,7 +20,7 @@ bool Simple_Trig::check_answer(const std::string& user_ans) {
 
 void Simple_Trig::change_vals(std::mt19937& gen) {
 	std::stringstream strstr;
-	strstr << "| Standard Trig |: " <<
+	strstr << "| Standard Trig |:\n" <<
 R"""(Given the following right triangle
                .
               /|

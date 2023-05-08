@@ -91,7 +91,7 @@ void Inverse_Unit_Circle::change_vals(std::mt19937& gen) {
 	}
 	size_t rad_or_deg = rad_or_deg_dec(gen);
 	size_t val_to_use[3]{ 0, 0, 1 };
-	question = "| Inverse Unit Circle |: What is the exact value of arc";
+	question = "| Inverse Unit Circle |\nWhat is the exact value of arc";
 	question += func_names[which_func];
 	question += "(";
 	question += func_vals[val_to_use[which_func]][theta_choice];

@@ -31,7 +31,7 @@ void Point_From_Angle_And_Other_Point::change_vals(std::mt19937& gen) {
 	std::stringstream strstr;
 	size_t coord_to_find = coord_chooser(gen);
 	strstr << std::fixed << std::setprecision(2);
-	strstr << "| Points, Lines, and Slopes |: A line passes through the points\n(" << p0x << ", " << p0y << ") and (";
+	strstr << "| Points, Lines, and Slopes |\nA line passes through the points\n(" << p0x << ", " << p0y << ") and (";
 	explanation = "You should have calculated\n\t";
 	switch (coord_to_find) {
 	case 0:

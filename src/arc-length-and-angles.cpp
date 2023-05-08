@@ -23,7 +23,7 @@ void Arc_Length_And_Angles::change_vals(std::mt19937& gen) {
 	double arc_length = radius * angle * M_PI / 180.0;
 	missing_variable = missing_variable_chooser(gen);
 	std::stringstream strstr;
-	strstr << "| Arc Length and Angles |: ";
+	strstr << "| Arc Length and Angles |\n";
 	switch (missing_variable) {
 	case 0:
 		strstr << "Find the radius of an arc with\n" << "arc length = " << arc_length << "\nangle = " << angle << "°\n";

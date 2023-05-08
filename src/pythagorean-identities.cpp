@@ -34,7 +34,7 @@ bool Pythagorean_Identities::check_answer(const std::string& user_ans) {
 
 void Pythagorean_Identities::change_vals(std::mt19937& gen) {
 	which_identity = identity_chooser(gen);
-	question = "| Pythagorean Identities |: What is the exact value of ";
+	question = "| Pythagorean Identities |\nWhat is the exact value of ";
 	question += identity_question[which_identity];
 	question += "?\n\nYour answer should\n\t- have no spaces\n\t- use x^2 to indicate the square of x\n\t- Only consist of a trig function squared or 1.";
 	answer = identity_answers[which_identity];
